@@ -1,13 +1,34 @@
-import React from "react";
-import Maps from "./components/Maps";
+// library
+import React, { useState } from "react";
+import { Switch } from "antd";
+import { store } from "./components/Store";
+import { Provider } from "react-redux";
+
+// components
+// import Maps from "./components/Maps";
+import DataAngka from "./components/DataAngka";
+import DataChart from "./components/DataChart";
+
+// style
 import "./App.css";
 
-function App() {
+const App = () => {
+  const [toggle, setToggle] = useState(false);
+
+  const toggler = () => {
+    toggle ? setToggle(false) : setToggle(true);
+  };
+
   return (
-    <div className="App">
-      <Maps />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        {/* Map Javascript API tidak berfungsi karena terkendala penggunaan API dari google */}
+        {/* <Maps /> */}
+        <Switch onClick={toggler} />
+        {toggle ? <DataChart /> : <DataAngka />}
+      </div>
+    </Provider>
   );
-}
+};
 
 export default App;
