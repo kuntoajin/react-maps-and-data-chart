@@ -1,13 +1,13 @@
 // library
 import React, { useState } from "react";
 import { Switch } from "antd";
-import { store } from "./components/Store";
 import { Provider } from "react-redux";
+import { store } from "./components/store";
 
 // components
 // import Maps from "./components/Maps";
-import DataAngka from "./components/DataAngka";
-import DataChart from "./components/DataChart";
+import Angka from "./components/Angka";
+import Chart from "./components/Chart";
 
 // style
 import "./App.css";
@@ -25,7 +25,7 @@ const App = () => {
         {/* Map Javascript API tidak berfungsi karena terkendala penggunaan API dari google */}
         {/* <Maps /> */}
         <Switch onClick={toggler} />
-        {toggle ? <DataChart /> : <DataAngka />}
+        {toggle ? <Chart /> : <Angka />}
       </div>
     </Provider>
   );
